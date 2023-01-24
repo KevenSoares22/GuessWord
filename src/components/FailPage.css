@@ -1,0 +1,28 @@
+.retryBtn{
+
+
+
+    
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 40px;
+    border-style: none;
+    height: 10vh;
+    width: 26vh;
+    
+    font-size: 18px;
+
+    background-color: rgb(255, 255, 255);
+    color:rgb(52, 142, 184);
+    transition: 1.2s;
+
+
+    
+}
+
+.retryBtn:hover{
+    color:rgb(255, 255, 255);
+    background-color: rgb(52, 142, 184);
+    border-radius: 6px;
+}
