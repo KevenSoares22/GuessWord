@@ -32,9 +32,21 @@ function App() {
 
 
 
+
+
     const[selectedWord, setSelectedWord] = useState("")
     const[selectedClass, setSelectedClass] = useState("")
     const[selectedLetter, setSelectedLetter] = useState("")
+    const[totalPoints, setTotalPoints] = useState(0)
+    //Numero de tentativas de advinhação
+    const[chances, setChances] = useState(4)
+
+
+    //Letras usadas
+    const[wrongLetter, setWrongLetter] = useState([])
+    const[correctLetter, setCorrectLetter] = useState([])
+
+
     let selectGameParameters = () =>{
     const allClasses = Object.keys(words)
     const classNumber = Math.floor(Math.random() * Object.keys(allClasses).length)
@@ -87,7 +99,23 @@ const retryGame = () =>{
 
 
       {thisState === 'init' && <MainPage startGame={startGame} />}
-      {thisState === 'play' && <GamePage loseGame={loseGame}/>}  
+      {thisState === 'play' && <GamePage 
+      loseGame={loseGame} 
+
+      selectedClass={selectedClass} 
+      selectedWord={selectedWord}
+
+
+      selectedLetter={selectedLetter} 
+
+
+      totalPoints={totalPoints}
+      chances={chances}
+
+      correctLetter={correctLetter}
+      wrongLetter={wrongLetter}
+      
+      />}  
       {thisState === 'retry' && <FailPage retryGame={retryGame}/>}
 
 

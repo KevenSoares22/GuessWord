@@ -18,14 +18,19 @@ body{
 
 
 
-h1{
+h1, h2, h3{
     color:rgb(201, 201, 201);
-    font-size: 40px;
 
-    text-transform: uppercase;
 }
 
+h1{
+    font-size: 40px;
 
+    text-transform: uppercase;    
+
+
+
+}
 
 
 p{
