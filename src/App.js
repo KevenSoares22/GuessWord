@@ -1,7 +1,7 @@
 
 import './App.css';
 import { useState } from 'react';
-//import AllWords from './data/words';
+import {AllWords} from './data/words';
 
 
 import MainPage from './components/MainPage';
@@ -22,10 +22,50 @@ let state = [
 function App() {
 
     const[thisState, selectState] = useState(state[0].stateName)
-   // const[words] = useState(AllWords)
+    const[words] = useState(AllWords)
+ 
 
-   // console.log(words)
+
+
+
+    
+
+
+
+    const[selectedWord, setSelectedWord] = useState("")
+    const[selectedClass, setSelectedClass] = useState("")
+    const[selectedLetter, setSelectedLetter] = useState("")
+    let selectGameParameters = () =>{
+    const allClasses = Object.keys(words)
+    const classNumber = Math.floor(Math.random() * Object.keys(allClasses).length)
+    const thisClass = allClasses[classNumber]
+    
+    console.log(thisClass)
+    const thisWord = words[thisClass][Math.floor(Math.random() * words[thisClass].length)]
+   
+    return{thisClass, thisWord}
+  
+  
+  }
+
+
 const startGame = () =>{
+
+
+//Seleciona a classe e a palavra de forma aleatoria
+    const{thisClass, thisWord} = selectGameParameters()
+
+
+
+//Split na palavra aleatoria
+    let arrayWord = thisWord.toLowerCase().split("")
+    console.log(arrayWord)
+    setSelectedClass(thisClass)
+    setSelectedWord(thisWord)
+    setSelectedLetter(arrayWord)
+
+
+
     selectState(state[1].stateName)
 }
 
