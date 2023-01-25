@@ -1,0 +1,72 @@
+.iniciarBtn{
+
+
+
+    
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: rgb(52, 142, 184);
+    border-radius: 6px;
+    border-style: none;
+    height: 10vh;
+    width: 20vh;
+    
+    font-size: 18px;
+
+
+
+    
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: rgb(52, 142, 184);
+    border-radius: 6px;
+    border-style: none;
+    height: 10vh;
+    width: 20vh;
+    
+    font-size: 18px;
+
+
+
+    
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: rgb(52, 142, 184);
+    border-radius: 6px;
+    border-style: none;
+    height: 10vh;
+    width: 20vh;
+    
+    font-size: 18px;
+
+
+
+    
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: rgb(243, 243, 243);
+    background-color: rgb(52, 142, 184);
+    border-radius: 6px;
+    border-style: none;
+    height: 10vh;
+    width: 20vh;
+    
+    font-size: 18px;
+    transition: 1.2s;
+
+
+    
+}
+
+.iniciarBtn:hover{
+    color:rgb(52, 142, 184);
+    background-color: rgb(243, 243, 243);
+    border-radius: 40px;
+}
