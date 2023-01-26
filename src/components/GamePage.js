@@ -1,6 +1,14 @@
-import React from 'react'
+import {useState, useRef} from 'react'
 import './GamePage.css'
-const GamePage = ({loseGame, selectedClass, selectedWord, selectedLetter, totalPoints, chances, correctLetter, wrongLetter}) => {
+const GamePage = ({verifyLetter, selectedClass, selectedWord, selectedLetter, totalPoints, chances, correctLetter, wrongLetter}) => {
+  const inputRef = useRef(null)
+  const[letter, setLetter] = useState("")
+  const handleSubmit = (event) =>{
+    event.preventDefault()
+    verifyLetter(letter)
+    setLetter("")
+
+  }
   return (
     <div className="play">
 
@@ -32,9 +40,9 @@ const GamePage = ({loseGame, selectedClass, selectedWord, selectedLetter, totalP
 
 
         <div className="entryLetters">
-            <form>
+            <form onSubmit={handleSubmit}>
              <label for="inputLetter">Insira uma letra</label>
-             <input type="text" name="inputLetter" id="inputLetter" maxLength="1" required/>
+             <input type="text" name="inputLetter" id="inputLetter" ref={inputRef} value={letter} onChange={(event)=>(setLetter(event.target.value))} maxLength="1" required/>
              
             </form>
         
@@ -42,9 +50,9 @@ const GamePage = ({loseGame, selectedClass, selectedWord, selectedLetter, totalP
 
         </div>
         
+      
         
-        
-        <h3>Voce tem mais <span>{chances}</span> tentativas</h3>
+        <h3>Voce tem <span>{chances}</span> tentativas</h3>
 
     </div>
 

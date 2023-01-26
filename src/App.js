@@ -81,9 +81,36 @@ const startGame = () =>{
     selectState(state[1].stateName)
 }
 
-const loseGame = () =>{
-    selectState(state[2].stateName)
+const verifyLetter = (letter) =>{
+    let lowerCaseLetter = letter.toLowerCase()
+    console.log(lowerCaseLetter)
+      if (correctLetter.includes(lowerCaseLetter) || wrongLetter.includes(lowerCaseLetter)) {
+        return;
+      } 
 
+
+
+      if (selectedLetter.includes(lowerCaseLetter)) {
+        setCorrectLetter((actualCorrectLetter)=>[
+            ...actualCorrectLetter,
+            lowerCaseLetter
+
+
+        ])
+      } else{
+        setWrongLetter((actualWrongLetter)=>[
+            ...actualWrongLetter,
+            lowerCaseLetter
+
+
+        ])
+
+
+        
+      }
+      
+      
+      
 }
 const retryGame = () =>{
     selectState(state[0].stateName)
@@ -100,7 +127,7 @@ const retryGame = () =>{
 
       {thisState === 'init' && <MainPage startGame={startGame} />}
       {thisState === 'play' && <GamePage 
-      loseGame={loseGame} 
+      verifyLetter={verifyLetter} 
 
       selectedClass={selectedClass} 
       selectedWord={selectedWord}
