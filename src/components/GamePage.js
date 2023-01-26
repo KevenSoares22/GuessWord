@@ -41,7 +41,7 @@ const GamePage = ({verifyLetter, selectedClass, selectedWord, selectedLetter, to
 
         <div className="entryLetters">
             <form onSubmit={handleSubmit}>
-             <label for="inputLetter">Insira uma letra</label>
+             <label for="inputLetter">Insira uma letra e pressione enter</label>
              <input type="text" name="inputLetter" id="inputLetter" ref={inputRef} value={letter} onChange={(event)=>(setLetter(event.target.value))} maxLength="1" required/>
              
             </form>

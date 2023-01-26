@@ -1,6 +1,6 @@
 
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {AllWords} from './data/words';
 
 
@@ -62,7 +62,7 @@ function App() {
 
 
 const startGame = () =>{
-
+retryStates()
 
 //Seleciona a classe e a palavra de forma aleatoria
     const{thisClass, thisWord} = selectGameParameters()
@@ -105,14 +105,64 @@ const verifyLetter = (letter) =>{
 
         ])
 
-
+        setChances((actualChances)=>(actualChances - 1))
         
       }
       
       
       
 }
+
+
+const retryStates = () =>{
+
+        setCorrectLetter([])
+        setWrongLetter([])
+
+}
+
+
+
+//Reinicia as info
+useEffect(()=>{
+    if(chances===0){
+
+        retryStates()
+        selectState(state[2].stateName)
+      
+
+
+    }
+
+
+
+}, [chances])
+
+
+//Verifica o jogo
+useEffect(()=>{
+    const unrepeatLetters = [ ...new Set(selectedLetter)]
+
+
+
+    if (correctLetter.length === unrepeatLetters.length) {
+      setTotalPoints((actualTotalPoints)=>(actualTotalPoints = actualTotalPoints*2 + 40))
+      startGame()
+
+
+
+    }
+}, [correctLetter])
+
+
+
+
 const retryGame = () =>{
+
+
+
+    setTotalPoints(0)
+    setChances(4)    
     selectState(state[0].stateName)
 
 
@@ -143,7 +193,7 @@ const retryGame = () =>{
       wrongLetter={wrongLetter}
       
       />}  
-      {thisState === 'retry' && <FailPage retryGame={retryGame}/>}
+      {thisState === 'retry' && <FailPage retryGame={retryGame} selectedWord={selectedWord} totalPoints={totalPoints}/>}
 
 
 
