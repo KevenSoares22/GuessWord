@@ -1,6 +1,6 @@
 
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {AllWords} from './data/words';
 
 
@@ -47,21 +47,20 @@ function App() {
     const[correctLetter, setCorrectLetter] = useState([])
 
 
-    let selectGameParameters = () =>{
+    let selectGameParameters = useCallback(() =>{
     const allClasses = Object.keys(words)
     const classNumber = Math.floor(Math.random() * Object.keys(allClasses).length)
     const thisClass = allClasses[classNumber]
     
-    console.log(thisClass)
+    
     const thisWord = words[thisClass][Math.floor(Math.random() * words[thisClass].length)]
    
     return{thisClass, thisWord}
   
   
   }
-
-
-const startGame = () =>{
+, [words])
+const startGame = useCallback(() =>{
 retryStates()
 
 //Seleciona a classe e a palavra de forma aleatoria
@@ -71,7 +70,7 @@ retryStates()
 
 //Split na palavra aleatoria
     let arrayWord = thisWord.toLowerCase().split("")
-    console.log(arrayWord)
+    
     setSelectedClass(thisClass)
     setSelectedWord(thisWord)
     setSelectedLetter(arrayWord)
@@ -80,10 +79,10 @@ retryStates()
 
     selectState(state[1].stateName)
 }
-
+, [selectGameParameters])
 const verifyLetter = (letter) =>{
     let lowerCaseLetter = letter.toLowerCase()
-    console.log(lowerCaseLetter)
+
       if (correctLetter.includes(lowerCaseLetter) || wrongLetter.includes(lowerCaseLetter)) {
         return;
       } 
@@ -152,7 +151,7 @@ useEffect(()=>{
 
 
     }
-}, [correctLetter])
+}, [correctLetter, selectedLetter, startGame])
 
 
 
